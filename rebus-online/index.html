@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rebus Puzzle Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 倒计时进度条 -->
+        <div class="progress-bar-container">
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <!-- 标题和计数器区域 -->
+        <div class="header-section">
+            <h1 class="game-title"></h1>
+            <div class="counter-circle">
+                <span class="counter-number" id="counter">1</span>
+            </div>
+        </div>
+
+        <!-- Rebus Puzzle 图片区域 -->
+        <div class="puzzle-section">
+            <div class="puzzle-image-container">
+                <img src="./christmas-rebus-puzzles/christmas-rebus-puzzle-10.webp" alt="Rebus Puzzle" class="puzzle-image" id="puzzleImage">
+            </div>
+        </div>
+
+        <!-- 答案区域 -->
+        <div class="answer-section">
+            <div class="answer-box" id="answerBox">
+                <span class="answer-text" id="answerText">THINK IN PICTURES</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

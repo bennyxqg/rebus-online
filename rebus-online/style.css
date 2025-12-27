@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #E8E8E8 0%, #F5F5F5 50%, #E0E0E0 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 430px;
+    height: 100vh;
+    background: linear-gradient(135deg, #E8E8E8 0%, #F5F5F5 50%, #E0E0E0 100%);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 进度条区域 */
+.progress-bar-container {
+    width: 100%;
+    padding: 12px 16px;
+    padding-top: 20px;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 20px;
+    background-color: #6A0DAD;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(106, 13, 173, 0.3);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    border-radius: 20px;
+    width: 80%;
+    transition: width 0.3s ease;
+}
+
+/* 标题和计数器区域 */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    margin-top: 10px;
+}
+
+.game-title {
+    font-size: 42px;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 
+        3px 3px 0 #4B0082,
+        -1px -1px 0 #4B0082,
+        1px -1px 0 #4B0082,
+        -1px 1px 0 #4B0082,
+        0 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+.counter-circle {
+    width: 70px;
+    height: 70px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 3px solid #FFD700;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.counter-circle.bounce {
+    transform: scale(1.4);
+}
+
+.counter-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #fefdff;
+}
+
+/* Puzzle 图片区域 */
+.puzzle-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 30px;
+}
+
+.puzzle-image-container {
+    position: absolute;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.1),
+        0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-in-out, opacity 0.3s ease;
+}
+
+.puzzle-image-container.fade-out {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.puzzle-image-container.slide-in-left {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.puzzle-image-container.slide-in-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.puzzle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+/* 答案区域 */
+.answer-section {
+    padding: 20px;
+    padding-bottom: 150px;
+}
+
+.answer-box {
+    width: 100%;
+    background-color: #6A0DAD;
+    border-radius: 25px;
+    padding: 20px 30px;
+    text-align: center;
+    box-shadow: 
+        0 4px 16px rgba(106, 13, 173, 0.4),
+        0 2px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.6s ease;
+}
+
+.answer-box.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.answer-text {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+    .game-title {
+        font-size: 32px;
+    }
+
+    .counter-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .counter-circle::before {
+        width: 68px;
+        height: 68px;
+    }
+
+    .counter-number {
+        font-size: 20px;
+    }
+
+    .answer-text {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 320px) {
+    .game-title {
+        font-size: 28px;
+    }
+
+    .counter-circle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .counter-circle::before {
+        width: 58px;
+        height: 58px;
+    }
+
+    .counter-number {
+        font-size: 18px;
+    }
+
+    .answer-text {
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+}
